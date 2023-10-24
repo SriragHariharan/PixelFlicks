@@ -1,3 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* custom styles */
+@layer components {
+  .leaf{
+    border-radius: 1% 200%;
+    background-image: linear-gradient(to right, rgb(182,244,146), rgb(51, 139, 147));
+  }
+}
+
+html {
+  font-family: 'Poppins', sans-serif;
+}
