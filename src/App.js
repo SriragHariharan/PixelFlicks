@@ -1,9 +1,8 @@
 
-
 function App() {
   return (
-    <div className="App">
-      <h1>hello pixelflicks</h1>
+    <div>
+      <h1 className="text-3xl text-red-400 text-center underline decoration-wavy">hello pixelflicks</h1>
     </div>
   );
 }
