@@ -8,7 +8,7 @@ const Navbar = () => {
       {/* banner image */}
       <div>
         <div className="bg-black bg-opacity-100 absolute inset-0"></div>
-        <img src={MAIN_BANNER_IMAGE} alt="banner home screen" className="opacity-50 h-screen w-full" />
+        <img src={MAIN_BANNER_IMAGE} alt="banner home screen" className="opacity-50 h-screen w-full sm: object-cover lg:object-fit" />
         
         {/* overlaying text */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">

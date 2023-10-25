@@ -13,6 +13,10 @@
   }
 }
 
+.form-error {
+  @apply text-red-500 font-bold mt-1 sm:text-4xl lg:text-sm;
+}
+
 html {
   font-family: 'Poppins', sans-serif;
 }
