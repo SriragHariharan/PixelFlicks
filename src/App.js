@@ -1,11 +1,11 @@
-import Auth from "./components/Auth";
-import Navbar from "./components/Navbar";
+import { RouterProvider } from "react-router-dom";
+import useRoutes from "./hooks/useRoutes";
 
 function App() {
+  const router = useRoutes()
   return (
     <div>
-      {/* <Navbar /> */}
-      <Auth />
+      <RouterProvider router={router} />
     </div>
   );
 }
