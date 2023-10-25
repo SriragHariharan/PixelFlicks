@@ -1,15 +1,14 @@
+import { MAIN_BANNER_IMAGE } from "../utils/constants"
 
 const Navbar = () => {
     
-  const  bannerImg = 'https://assets.nflxext.com/ffe/siteui/vlv3/a73c4363-1dcd-4719-b3b1-3725418fd91d/fe1147dd-78be-44aa-a0e5-2d2994305a13/IN-en-20231016-popsignuptwoweeks-perspective_alpha_website_large.jpg'
-
   return (
     <div className="relative">
       
       {/* banner image */}
       <div>
         <div className="bg-black bg-opacity-100 absolute inset-0"></div>
-        <img src={bannerImg} alt="banner home screen" className="opacity-50 h-screen w-full" />
+        <img src={MAIN_BANNER_IMAGE} alt="banner home screen" className="opacity-50 h-screen w-full" />
         
         {/* overlaying text */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
