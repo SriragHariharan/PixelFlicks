@@ -1,19 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from "react-hook-form"
+import { auth } from '../utils/firebase'
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = ({updateNewUserState}) => {
+    
+    const [error, setError] = useState(null);
+
 
     const changeFormToSignup = () => {
         updateNewUserState()
     }
     //form handling
-    const { register, handleSubmit, formState: { errors }, watch } = useForm()
-    const onSubmit = (data) => console.log(data)
+    const { register, handleSubmit, formState: { errors } } = useForm()
+    
+    const onSubmit = (data) => {
+        console.log(data)
+        signInWithEmailAndPassword(auth, data.email, data.password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            console.log(user)
+        })
+        .catch((error) => {
+            const errorCode = error.code.split('/')[1].replace(/-/g, ' ');
+            setError(errorCode)
+        });
+
+    }
 
   return (
     <div className="max-w-7xl p-16 bg-black">
         <form onSubmit={handleSubmit(onSubmit)}>
             <p className="mb-10 text-center text-white sm:text-6xl lg:text-4xl">Sign in</p>
+
+            {/* error messages */}
+            {error && <p className='text-center text-red-500 py-2 px-4 border border-red-500'>{error}</p>}
 
             <div className="sm:mb-12 lg:mb-6">
                 <label htmlFor="email" className="block text-lg font-medium text-white md:text-4xl lg:text-base">email</label>

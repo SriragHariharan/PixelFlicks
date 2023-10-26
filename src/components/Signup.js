@@ -1,19 +1,46 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from "react-hook-form"
+import { auth } from '../utils/firebase'
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 const Signup = ({updateNewUserState}) => {
     
+    const [error, setError] = useState(null);
+    
+    //toggle form to login
     const changeFormToLogin = () => {
         updateNewUserState()
     }
+    
     //form handling
-    const { register, handleSubmit, formState: { errors }, watch } = useForm()
-    const onSubmit = (data) => console.log(data)
+    const { register, handleSubmit, formState: { errors }, watch } = useForm();
+    
+    //uploading form data to firebase
+    const onSubmit = (data) => {
+        console.log(data.email, data.confirmPassword)
+
+        //firebase code
+        createUserWithEmailAndPassword(auth, data.email, data.confirmPassword)
+        .then((userCredential) => { 
+            const user = userCredential.user;
+            updateProfile(user, {
+                displayName: data.username,
+            })
+            console.log(userCredential.user)
+        })
+        .catch((error) => {
+            let errorMessage = error.code.split('/')[1].replace(/-/g, ' ');
+            setError(errorMessage)
+        });
+    }
   
   return (
     <div className="max-w-7xl px-16 py-8 bg-black">
         <form onSubmit={handleSubmit(onSubmit)}>
             <p className="mb-8 text-center text-white sm:text-6xl lg:text-4xl">Sign up</p>
+
+            {/* error messages */}
+            {error && <p className='text-center text-red-500 py-2 px-4 border border-red-500'>{error}</p>}
 
             <div className="sm:mb-12 lg:mb-6">
                 <label htmlFor="username" className="block text-lg font-medium text-white md:text-4xl lg:text-base">Username</label>
