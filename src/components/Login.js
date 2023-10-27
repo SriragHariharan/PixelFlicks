@@ -2,10 +2,16 @@ import React, { useState } from 'react'
 import { useForm } from "react-hook-form"
 import { auth } from '../utils/firebase'
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../redux-toolkit/userReducer';
+import { useNavigate } from 'react-router-dom';
 
 const Login = ({updateNewUserState}) => {
     
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false)
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
 
 
     const changeFormToSignup = () => {
@@ -15,13 +21,16 @@ const Login = ({updateNewUserState}) => {
     const { register, handleSubmit, formState: { errors } } = useForm()
     
     const onSubmit = (data) => {
-        console.log(data)
+        setLoading(true);
+        //firebase code
         signInWithEmailAndPassword(auth, data.email, data.password)
         .then((userCredential) => {
-            const user = userCredential.user;
-            console.log(user)
+            let {email, uid, displayName, photoURL} = userCredential?.user;
+            dispatch(loginUser({ email, uid, displayName, photoURL }));
+            navigate('/browse')
         })
         .catch((error) => {
+            setLoading(false);
             const errorCode = error.code.split('/')[1].replace(/-/g, ' ');
             setError(errorCode)
         });
@@ -64,9 +73,16 @@ const Login = ({updateNewUserState}) => {
             </div>
 
             <div>
-                <button type="submit" className="w-full px-4 bg-green-500 text-white rounded-md md:text-4xl lg:text-lg md:h-28 lg:h-10">
-                    Submit
-                </button>
+                {
+                    loading ?
+                    (
+                        <button className='w-full px-4 bg-green-500 text-white rounded-md md:text-4xl lg:text-lg md:h-28 lg:h-10'>
+                            <i className="fa-solid fa-circle-notch fa-spin "></i>
+                        </button>
+                    )
+                    :
+                    <input type="submit" className="w-full cursor-pointer px-4 bg-green-500 text-white rounded-md md:text-4xl lg:text-lg md:h-28 lg:h-10" />
+                }
             </div>
 
             <div className='sm:mt-12 lg:mt-6'>

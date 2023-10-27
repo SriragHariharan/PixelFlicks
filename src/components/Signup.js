@@ -2,10 +2,16 @@ import React, { useState } from 'react'
 import { useForm } from "react-hook-form"
 import { auth } from '../utils/firebase'
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../redux-toolkit/userReducer';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = ({updateNewUserState}) => {
     
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
     
     //toggle form to login
     const changeFormToLogin = () => {
@@ -17,19 +23,24 @@ const Signup = ({updateNewUserState}) => {
     
     //uploading form data to firebase
     const onSubmit = (data) => {
-        console.log(data.email, data.confirmPassword)
-
+        setLoading(true);
         //firebase code
         createUserWithEmailAndPassword(auth, data.email, data.confirmPassword)
         .then((userCredential) => { 
             const user = userCredential.user;
             updateProfile(user, {
                 displayName: data.username,
+                photoURL: "https://cdn4.iconfinder.com/data/icons/green-shopper/1068/user.png"
             })
-            console.log(userCredential.user)
+            .then(() => {
+                let {email, uid, displayName, photoURL} = userCredential?.user;
+                dispatch(loginUser({ email, uid, displayName, photoURL }));
+                navigate('/browse');
+            })
         })
         .catch((error) => {
-            let errorMessage = error.code.split('/')[1].replace(/-/g, ' ');
+            setLoading(false);
+            let errorMessage = error?.code?.split('/')[1]?.replace(/-/g, ' ');
             setError(errorMessage)
         });
     }
@@ -101,7 +112,16 @@ const Signup = ({updateNewUserState}) => {
             </div>
 
             <div>
-                <input type="submit" className="w-full cursor-pointer px-4 bg-green-500 text-white rounded-md md:text-4xl lg:text-lg md:h-28 lg:h-10" />
+                {
+                    loading ?
+                    (
+                        <button className='w-full px-4 bg-green-500 text-white rounded-md md:text-4xl lg:text-lg md:h-28 lg:h-10'>
+                            <i className="fa-solid fa-circle-notch fa-spin "></i>
+                        </button>
+                    )
+                    :
+                    <input type="submit" className="w-full cursor-pointer px-4 bg-green-500 text-white rounded-md md:text-4xl lg:text-lg md:h-28 lg:h-10" />
+                }
             </div>
 
             <div className='sm:mt-12 lg:mt-6'>
