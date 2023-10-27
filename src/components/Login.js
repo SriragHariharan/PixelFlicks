@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useForm } from "react-hook-form"
 import { auth } from '../utils/firebase'
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { loginUser } from '../redux-toolkit/userReducer';
 import { useNavigate } from 'react-router-dom';
 

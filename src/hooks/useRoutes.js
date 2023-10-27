@@ -10,6 +10,7 @@ import RootLayout from "../utils/RootLayout";
 //components
 import Navbar from "../components/Navbar";
 import Auth from "../components/Auth";
+import Banner from "../components/Banner";
 
 
 function useRoutes() {
@@ -19,6 +20,7 @@ function useRoutes() {
             <Route path="/" element={<RootLayout />}>
                 <Route index element={<Navbar />} />
                 <Route path="auth" element={<Auth />} />
+                <Route path="browse" element={<Banner />} />
             </Route>
         )
     );

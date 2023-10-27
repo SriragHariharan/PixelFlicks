@@ -7,7 +7,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        amantic:['Amatic SC', 'sans-serif']
+        amantic:['Amatic SC', 'sans-serif'],
+        leo: ['Libre Baskerville', 'serif']
       },
     },
   },
