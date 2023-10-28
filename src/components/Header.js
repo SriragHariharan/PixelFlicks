@@ -1,11 +1,31 @@
+//seen on top after the user sign in
+
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { auth } from "../utils/firebase";
+import { logoutUser } from "../redux-toolkit/userReducer";
+import { useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
 
 const Header = () => {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     const toggleDropdown = () => {
         setDropdownOpen(!isDropdownOpen);
     };
+
+    //getting user details from redux store
+    const userDetails = useSelector(store => store?.user?.user)
+
+    //logout user
+    const handleLogout = () => {
+        signOut(auth).then(() => {
+            dispatch(logoutUser());
+            navigate('/')
+        })
+    }
 
   return (
     <div className="z-20 absolute w-screen bg-gradient-to-b from-black  flex justify-between pb-48 pt-5 pl-10 pr-10 mt-24">
@@ -22,9 +42,10 @@ const Header = () => {
             <button
                 onClick={toggleDropdown}
                 type="button"
-                className="px-10 py-2 sm:text-2xl lg:text-base font-bold text-black bg-green-500 border rounded-lg"
+                className="px-10 py-2 sm:text-2xl lg:text-base font-bold text-black bg-transparent border-2 rounded-lg"
             >
-                You
+                <img src={userDetails?.photoURL} alt="dp" className="w-7 h-7 inline-block mr-4" />
+                <p className="inline-block text-white text-lg">{userDetails?.displayName}</p> 
             </button>
 
             {/* Dropdown menu */}
@@ -34,7 +55,7 @@ const Header = () => {
                     {/* Dropdown items */}
                     <div className="cursor-pointer block px-6 sm:py-10 border border-b-4 border-slate-100 lg:py-3 text-sm text-gray-700 sm:text-3xl lg:text-base">Profile</div>
                     <div className="cursor-pointer block px-6 sm:py-10 border border-b-4 border-slate-100 lg:py-3 text-sm text-gray-700 sm:text-3xl lg:text-base">Logout</div>
-                    <div className="cursor-pointer block px-6 sm:py-10 border            border-slate-100 lg:py-3 text-sm text-gray-700 sm:text-3xl lg:text-base">Logout</div>
+                    <div onClick={handleLogout} className="cursor-pointer block px-6 sm:py-10 border            border-slate-100 lg:py-3 text-sm text-gray-700 sm:text-3xl lg:text-base">Logout</div>
                 </div>
                 </div>
             )}

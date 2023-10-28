@@ -1,8 +1,10 @@
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  Navigate,
   Route,
 } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 //layouts
 import RootLayout from "../utils/RootLayout";
@@ -14,13 +16,16 @@ import Banner from "../components/Banner";
 
 
 function useRoutes() {
+    const USER = useSelector(store => store?.user?.user);
+    console.log(USER);
+
     //routes
     const router = createBrowserRouter(
         createRoutesFromElements(
             <Route path="/" element={<RootLayout />}>
-                <Route index element={<Navbar />} />
-                <Route path="auth" element={<Auth />} />
-                <Route path="browse" element={<Banner />} />
+                <Route index element={!USER ? <Navbar /> : <Navigate to={'/browse'} />} />
+                <Route path="auth" element={!USER ? <Auth /> : <Navigate to={'/browse'} />} />
+                <Route path="browse" element={USER ? <Banner /> : <Navigate to={'/auth'} /> } />
             </Route>
         )
     );

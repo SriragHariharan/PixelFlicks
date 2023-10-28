@@ -5,6 +5,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../redux-toolkit/userReducer';
 import { useNavigate } from 'react-router-dom';
+import { USER_AVATAR } from '../utils/constants';
 
 const Signup = ({updateNewUserState}) => {
     
@@ -30,7 +31,7 @@ const Signup = ({updateNewUserState}) => {
             const user = userCredential.user;
             updateProfile(user, {
                 displayName: data.username,
-                photoURL: "https://cdn4.iconfinder.com/data/icons/green-shopper/1068/user.png"
+                photoURL: USER_AVATAR
             })
             .then(() => {
                 let {email, uid, displayName, photoURL} = userCredential?.user;
@@ -57,7 +58,7 @@ const Signup = ({updateNewUserState}) => {
                 <label htmlFor="username" className="block text-lg font-medium text-white md:text-4xl lg:text-base">Username</label>
                 <input 
                     type="text" 
-                    {...register("username", { required: true, minLength: 4, maxLength:10 })}
+                    {...register("username", { required: true, minLength: 4, maxLength:20 })}
                     placeholder='Username' 
                     className=" mt-2 p-3 w-full border rounded-md bg-red-40 md:text-4xl md:h-28 lg:h-10 lg:text-sm lg:w-96" 
                 />
