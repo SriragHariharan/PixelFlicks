@@ -23,7 +23,7 @@ const Banner = () => {
         {/* text over image */}
         <div className="relative">
 
-            {/* <div className="bg-black bg-opacity-0 absolute inset-0"></div> */}
+            <div className="bg-black bg-opacity-50 absolute inset-0"></div>
 
             <Header />
 
@@ -35,8 +35,8 @@ const Banner = () => {
                 allowfullscreen>
             </iframe> */}
 
-            <video autoPlay muted className='mt-[-100px]' ref={videoRef}>
-                <source src={LEO_TRAILER} type="video/mp4" className='w-screen min-h-screen aspect-video sm:hidden lg:block object-cover' />
+            <video autoPlay muted className=' mt-[-100px] sm:hidden lg:block' ref={videoRef}>
+                <source src={LEO_TRAILER} type="video/mp4" className='w-screen h-screen aspect-video object-cover' />
                 Your browser does not support the video tag.
             </video>
 
@@ -65,11 +65,11 @@ const Banner = () => {
                     </>
                 }
                 <div className='flex mt-6'>
-                    <button className='text-black bg-white font-bold px-6 py-2 rounded-lg mr-6 hover:bg-opacity-50' onClick={handleVideoClick}>
+                    <button className='text-black bg-white font-bold lg:w-28 lg:h-12 lg:text-base sm:w-96 sm:h-24 sm:text-4xl rounded-lg mr-6 hover:bg-opacity-50' onClick={handleVideoClick}>
                         <i className="fa-solid fa-play"></i> &nbsp;&nbsp;
                         PLAY
                     </button>
-                    <button onClick={() => setIsMoreInfoSelected(!isMoreInfoSelected)} className='text-white bg-slate-500 bg-opacity-40 hover:bg-opacity-100 font-bold px-6 py-2 rounded-lg'>
+                    <button onClick={() => setIsMoreInfoSelected(!isMoreInfoSelected)} className='text-white sm:w-96 sm:h-24 sm:text-4xl lg:w-48 lg:h-12 lg:text-base bg-slate-500 bg-opacity-40 hover:bg-opacity-100 font-bold px-6 py-2 rounded-lg'>
                         <i className="fa-solid fa-circle-info"></i> &nbsp;&nbsp;
                         MORE INFO
                     </button>

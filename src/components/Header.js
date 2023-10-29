@@ -28,7 +28,7 @@ const Header = () => {
     }
 
   return (
-    <div className="z-20 absolute w-screen bg-gradient-to-b from-black  flex justify-between pb-48 pt-5 pl-10 pr-10 mt-24">
+    <div className="z-20 absolute w-full bg-gradient-to-b from-black  flex justify-between pb-48 pt-5 pl-10 pr-10 lg:mt-24">
         {/* logo part */}
         <div className="flex">
             <div className="leaf w-20 h-20 xl:w-14 xl:h-14 inline-block"></div>
