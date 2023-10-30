@@ -13,6 +13,7 @@ import RootLayout from "../utils/RootLayout";
 import Navbar from "../components/Navbar";
 import Auth from "../components/Auth";
 import Browse from "../pages/Browse";
+import Search from "../pages/Search";
 
 
 function useRoutes() {
@@ -26,6 +27,7 @@ function useRoutes() {
                 <Route index element={!USER ? <Navbar /> : <Navigate to={'/browse'} />} />
                 <Route path="auth" element={!USER ? <Auth /> : <Navigate to={'/browse'} />} />
                 <Route path="browse" element={USER ? <Browse /> : <Navigate to={'/auth'} /> } />
+                <Route path="search" element={USER ? <Search /> : <Navigate to={'/auth'} /> } />
             </Route>
         )
     );

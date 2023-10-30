@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { auth } from "../utils/firebase";
 import { logoutUser } from "../redux-toolkit/userReducer";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 
 const Header = () => {
@@ -42,11 +42,14 @@ const Header = () => {
             <button
                 onClick={toggleDropdown}
                 type="button"
-                className="px-10 py-2 sm:text-2xl lg:text-base font-bold text-black bg-transparent border-2 rounded-lg"
+                className="px-10 py-2 sm:text-2xl lg:text-base font-bold bg-transparent border-2 rounded-lg"
             >
                 <img src={userDetails?.photoURL} alt="dp" className="w-7 h-7 inline-block mr-4" />
                 <p className="inline-block text-white text-lg">{userDetails?.displayName}</p> 
             </button>
+            <Link to={'/search'} className="ml-4 px-4 py-3 sm:text-2xl lg:text-base font-bold bg-transparent border-2 rounded-lg">
+                <i className="fa-solid fa-magnifying-glass text-white text-xl"></i>
+            </Link>
 
             {/* Dropdown menu */}
             {isDropdownOpen && (
