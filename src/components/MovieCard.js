@@ -2,7 +2,7 @@ import React from 'react'
 import { TMDB_IMG_CDN } from '../utils/constants'
 
 function MovieCard({movieDetails}) {
-  console.log(movieDetails)
+
   return (
     <div class="w-56 m-2 rounded shadow-lg p-2">
         <img src={TMDB_IMG_CDN + movieDetails?.poster_path} alt={movieDetails?.original_title + "film poster"} className="w-56 h-72" />
