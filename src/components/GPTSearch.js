@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import openAI_config from '../utils/openai';
 import { TMDB_API_OPTIONS } from '../utils/constants';
+import { useDispatch } from 'react-redux';
+import { setGptSuggestions, setTmdbSuggestions } from '../redux-toolkit/searchedMovieReducer';
 
 function GPTSearch() {
     const [query, setQuery] = useState("");
+    const dispatch = useDispatch()
 
     const handleQueryChange = (e) => {
         setQuery(e.target.value)
@@ -34,10 +37,10 @@ function GPTSearch() {
         console.log("button clicked :::"+ query)
 
         const tmdbResults = await getTmdbResults(query);
-        console.log("tmdbResults :::", tmdbResults)
+        dispatch(setTmdbSuggestions(tmdbResults))
 
         const gptResults = await getGptResults(query);
-        console.log("gptResults :::", gptResults)
+        dispatch(setGptSuggestions(gptResults))
     }
 
   return (
