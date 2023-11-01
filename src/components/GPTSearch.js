@@ -26,7 +26,7 @@ function GPTSearch() {
 
     //handling gpt api
     const getTmdbResults = async() => {
-        let resp = await fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&primary_release_year=2016&page=1`, TMDB_API_OPTIONS);
+        let resp = await fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false`, TMDB_API_OPTIONS);
         let json = await resp.json();
         return json.results
     }
