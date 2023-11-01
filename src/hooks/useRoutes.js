@@ -29,7 +29,7 @@ function useRoutes() {
                 <Route path="auth" element={!USER ? <Auth /> : <Navigate to={'/browse'} />} />
                 <Route path="browse" element={USER ? <Browse /> : <Navigate to={'/auth'} /> } />
                 <Route path="search" element={USER ? <Search /> : <Navigate to={'/auth'} /> } />
-                <Route path="movie-details" element={USER ? <MovieDetails /> : <Navigate to={'/auth'} /> } />
+                <Route path="movie-details/:id" element={USER ? <MovieDetails /> : <Navigate to={'/auth'} /> } />
             </Route>
         )
     );
