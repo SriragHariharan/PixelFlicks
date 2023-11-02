@@ -15,7 +15,7 @@
 }
 
 .form-error {
-  @apply text-red-500 font-bold mt-1 sm:text-4xl lg:text-sm;
+  @apply text-red-500 font-bold mt-1 -mb-4 text-sm;
 }
 
 html {

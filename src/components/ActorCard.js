@@ -6,15 +6,15 @@ function ActorCard({name, character, dp, role}) {
     <>
     {
         dp &&
-        <div className="bg-white w-40 h-80">
+        <div className="bg-white sm:w-24 sm:h-56 md:w-40 md:h-80">
             <img 
                 src={TMDB_IMG_CDN + dp} 
                 alt=""
             />
             {
-                character && <p className="text-black  px-3 text-md">{character}</p>
+                character && <p className="text-black px-2 text-xs md:text-base">{character}</p>
             }
-            <p className="text-green-500  px-3 text-sm mt-2">{name}</p>            
+            <p className="text-green-500 px-2 text-xs mt-2 md:text-base">{name}</p>            
         </div>
     }
     </>

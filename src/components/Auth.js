@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { MAIN_BANNER_IMAGE } from '../utils/constants'
 import Login from './Login'
 import Signup from './Signup'
-import { Link } from 'react-router-dom'
+import Logo from './Logo'
 
 const Auth = () => {
   const [newUser, setNewuser] = useState(false);
@@ -18,14 +18,11 @@ const Auth = () => {
             <img src={MAIN_BANNER_IMAGE} alt="banner home screen" className="opacity-50 h-screen w-full sm: object-cover lg:object-fit" />
         </div>
         
-        <Link to={'/'} className="z-10 absolute top-10 left-10 flex items-center justify-center">
-            <div className="leaf w-20 h-20 xl:w-14 xl:h-14 inline-block"></div>
-            <div className="text-8xl xl:text-6xl font-amantic font-extrabold text-green-300">
-              PixelFlicks
-            </div>
-        </Link>
+        <div className="z-10 absolute top-4 left-4 flex items-center justify-center">
+            <Logo />
+        </div>
 
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex mt-10 lg:items-center justify-center">
           {
             newUser ? <Signup updateNewUserState={updateNewUserState} /> : <Login updateNewUserState={updateNewUserState} /> 
           }

@@ -6,6 +6,7 @@ import { auth } from "../utils/firebase";
 import { logoutUser } from "../redux-toolkit/userReducer";
 import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
+import Logo from "./Logo";
 
 const Header = () => {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -28,27 +29,22 @@ const Header = () => {
     }
 
   return (
-    <div className="z-20 absolute w-full bg-gradient-to-b from-black  flex justify-between pb-48 pt-5 pl-10 pr-10 lg:mt-24">
+    <div className="z-20 absolute w-full bg-gradient-to-b from-black  flex justify-between pb-48 pt-5 px-5 lg:mt-24">
         {/* logo part */}
-        <div className="flex">
-            <div className="leaf w-20 h-20 xl:w-14 xl:h-14 inline-block"></div>
-            <div className="text-8xl xl:text-6xl font-amantic font-extrabold text-green-300">
-              PixelFlicks
-            </div>
-        </div>
+        <Logo />
 
         {/* user and logout part */}
-        <div className="sm:mt-8 lg:mt-2 mr-24">
+        <div className="mt-1">
             <button
                 onClick={toggleDropdown}
                 type="button"
-                className="px-10 py-2 sm:text-2xl lg:text-base font-bold bg-transparent border-2 rounded-lg"
+                className="px-2 py-0 bg-transparent border rounded-lg"
             >
-                <img src={userDetails?.photoURL} alt="dp" className="w-7 h-7 inline-block mr-4" />
-                <p className="inline-block text-white text-lg">{userDetails?.displayName}</p> 
+                <img src={userDetails?.photoURL} alt="dp" className="w-5 h-5 inline-block mr-1" />
+                <p className="inline-block text-white text-xs lg:text-base lg:p-2 ">{userDetails?.displayName}</p> 
             </button>
-            <Link to={'/search'} className="ml-4 px-4 py-3 sm:text-2xl lg:text-base font-bold bg-transparent border-2 rounded-lg">
-                <i className="fa-solid fa-magnifying-glass text-white text-xl"></i>
+            <Link to={'/search'} className="ml-1 px-2 py-0 bg-transparent border rounded-lg lg:py-2">
+                <i className="fa-solid fa-magnifying-glass text-white text-base lg:text-xl"></i>
             </Link>
 
             {/* Dropdown menu */}

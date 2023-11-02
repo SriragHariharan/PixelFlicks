@@ -26,9 +26,17 @@ function GPTSearch() {
 
     //handling gpt api
     const getTmdbResults = async() => {
-        let resp = await fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false`, TMDB_API_OPTIONS);
-        let json = await resp.json();
-        return json.results
+        let resp1 = await fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&page=1`, TMDB_API_OPTIONS);
+        let resp2 = await fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&page=2`, TMDB_API_OPTIONS);
+        let resp3 = await fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&page=3`, TMDB_API_OPTIONS);
+        let resp4 = await fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&page=4`, TMDB_API_OPTIONS);
+        let resp5 = await fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&page=5`, TMDB_API_OPTIONS);
+        let json1 = await resp1.json();
+        let json2 = await resp2.json();
+        let json3 = await resp3.json();
+        let json4 = await resp4.json();
+        let json5 = await resp5.json();
+        return [...json1.results, ...json2.results, ...json3.results, ...json4.results, ...json5.results]
     }
 
     //GPT Search logic && TMDB api logic
@@ -44,19 +52,19 @@ function GPTSearch() {
     }
 
   return (
-    <div className='flex'>
+    <div className="max-w-7xl flex p-6 md:p-0">
         <input 
-            type="text" 
-            value={query} 
+            type='text' 
+            value={query}
             onChange={handleQueryChange}
-            className='px-12 py-6 w-[50em] placeholder:text-2xl focus:outline-none' 
-            placeholder='What would you love to watch today ?' 
+            placeholder='What would you love to watch today ?'
+            className="p-3 w-full focus:outline-none lg:w-96" 
         />
-        <button onClick={handleGptSearch} className="bg-green-500">
-            <i className="fa-solid fa-magnifying-glass text-white text-3xl px-12"></i>
+        <button onClick={handleGptSearch} className="bg-green-500 px-3">
+            <i className="fa-solid fa-magnifying-glass text-white text-base"></i>
         </button>
     </div>
-  )
-}
-
-export default GPTSearch
+      )
+    }
+    
+    export default GPTSearch;

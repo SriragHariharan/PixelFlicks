@@ -1,9 +1,9 @@
 import React from 'react'
 import { MAIN_BANNER_IMAGE } from '../utils/constants'
 import GPTSearch from '../components/GPTSearch'
-import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import MovieCard from '../components/MovieCard'
+import Logo from '../components/Logo'
 
 function Search() {
   const moviesFromTMDB = useSelector(store => store?.movieSuggestions?.tmdbMovieSuggestions);
@@ -11,14 +11,11 @@ function Search() {
 
   return (
     <div className="bg-black">
-      <div className="w-screen opacity-75" style={{ backgroundImage: `url(${MAIN_BANNER_IMAGE})`}} >
+      <div className="w-screen object-cover h-full" style={{ backgroundImage: `url(${MAIN_BANNER_IMAGE})`}} >
           {/* logo */}
-          <Link to={'/'} className="flex pt-12 pl-12">
-              <div className="leaf w-20 h-20 xl:w-14 xl:h-14 inline-block"></div>
-              <div className="text-8xl xl:text-6xl font-amantic font-extrabold text-green-300">
-                PixelFlicks
-              </div>
-          </Link>    
+          <div className="pt-6 pl-6">
+            <Logo />    
+          </div>
 
           {/* search bar */}
           <div className='flex justify-center mt-10'>
@@ -26,23 +23,23 @@ function Search() {
           </div>  
 
           {/* TMDB search results */}
-          <div className="mt-24 grid place-items-center grid-cols-5">
+          <div className="mt-24 grid place-items-center grid-cols-2 lg:grid-cols-8">
             {
-              moviesFromTMDB?.map(movie => <div className="flex"><MovieCard movieDetails={movie} /></div>  )
+              moviesFromTMDB?.map(movie =><MovieCard movieDetails={movie} /> )
             }
 
           </div>
 
           {/* GPT search results */}
-          <div className="mt-24 grid place-items-center grid-cols-1 p-10">            
+          <div className="mt-24 grid place-items-center grid-cols-1 p-5">            
             
             <div className='rounded-3xl bg-white p-10'>
 
-              <div className='text-center text-3xl mb-4 underline decoration-wavy'>GPT SUGGESTIONS</div>
+              <div className='text-center font-semibold text-xl mb-4 underline decoration-wavy decoration-blue-400'>GPT SUGGESTIONS</div>
               <p className='my-10 text-base text-black'>
-                  {gptSuggestions || "GPT Content comes here"}
+                  {gptSuggestions || "[ GPT Content takes some time to load...]"}
               </p>
-              <p className="text-center text-gray-400 mt-4">
+              <p className="text-center text-gray-400 mt-4 text-xs">
                 ## Our GPT is still in beta mode & may generate incorrect information. Verify important information.
               </p>
             </div>
