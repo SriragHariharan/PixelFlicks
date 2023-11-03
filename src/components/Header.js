@@ -38,12 +38,11 @@ const Header = () => {
             <button
                 onClick={toggleDropdown}
                 type="button"
-                className="px-2 py-0 bg-transparent border rounded-lg"
+                className=" bg-transparent mr-4"
             >
-                <img src={userDetails?.photoURL} alt="dp" className="w-5 h-5 inline-block mr-1" />
-                <p className="inline-block text-white text-xs lg:text-base lg:p-2 ">{userDetails?.displayName}</p> 
+                <img src={userDetails?.photoURL} alt="dp" className="w-9 h-9 inline-block mr-1" />
             </button>
-            <Link to={'/search'} className="ml-1 px-2 py-0 bg-transparent border rounded-lg lg:py-2">
+            <Link to={'/search'} className="ml-1 px-3 py-2 bg-transparent border rounded-lg lg:py-2">
                 <i className="fa-solid fa-magnifying-glass text-white text-base lg:text-xl"></i>
             </Link>
 
@@ -52,9 +51,7 @@ const Header = () => {
                 <div className="origin-top-left absolute mt-2 sm:w-52 lg:w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" aria-orientation="vertical" aria-labelledby="options-menu">
                 <div className="py-1" role="none">
                     {/* Dropdown items */}
-                    <div className="cursor-pointer block px-6 sm:py-10 border border-b-4 border-slate-100 lg:py-3 text-sm text-gray-700 sm:text-3xl lg:text-base">Profile</div>
-                    <div className="cursor-pointer block px-6 sm:py-10 border border-b-4 border-slate-100 lg:py-3 text-sm text-gray-700 sm:text-3xl lg:text-base">Logout</div>
-                    <div onClick={handleLogout} className="cursor-pointer block px-6 sm:py-10 border            border-slate-100 lg:py-3 text-sm text-gray-700 sm:text-3xl lg:text-base">Logout</div>
+                    <div onClick={handleLogout} className="cursor-pointer block px-6 sm:py-10 border border-slate-100 lg:py-3 text-sm text-gray-700 sm:text-3xl lg:text-base">Logout</div>
                 </div>
                 </div>
             )}
