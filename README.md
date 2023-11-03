@@ -16,8 +16,6 @@ Welcome to __PixelFlicks__. My Netflix-inspired React app! 🍿🎬 This project
 
 🛡️ __Privacy Guard__: Embrace protected routes, a shield for user privacy in the digital realm.
 
-🎭 __Language Symphony__: Immerse users in a personalized experience with language selection—choose from English, Malayalam, or Hindi.
-
 
 ## Tech Marvels 🚀✨
 
@@ -34,3 +32,39 @@ Welcome to __PixelFlicks__. My Netflix-inspired React app! 🍿🎬 This project
 🧠 __Open AI GPT3.5 Turbo Enchantment__: Infusing your app with the wisdom of an AI oracle, providing spellbinding movie recommendations.
 
 🔥 __Firebase Fortress__: Building a secure haven for user authentication, ensuring their data is guarded like precious treasure.
+
+## Environment Variables 🌐
+
+To run this project, you need to set up a `.env` file in the root directory. Below is an example of the required variables:
+
+```env
+REACT_APP_OPENAI_SECRET_KEY = your_api_key
+REACT_APP_TMDB_AUTH_TOKEN = your_token 
+```
+- openAI secret key should be collected from https://platform.openai.com
+
+- TMDB auth token should be collected from https://developer.themoviedb.org/docs
+
+
+## Running PixelFlicks 🚀
+
+1. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
+2. **Start the app:**
+   ```bash
+   npm start
+   ```
+Open your browser and navigate to http://localhost:3000 to experience the magic of PixelFlicks! 🌟
+
+## Conclusion 🚀
+
+Thank you for exploring this project! We hope you enjoy the immersive experience our **PixelFlicks** brings to your entertainment journey. If you have any questions, feedback, or just want to say hello, feel free to reach out. Happy streaming! 🍿🎉
+
+---
+**[ Srirag H  sriraghariharan108@gmail.com ]**
+
+
+
+
