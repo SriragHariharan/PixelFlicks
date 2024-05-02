@@ -14,14 +14,19 @@ function GPTSearch() {
 
     //handling gpt search
     const getGptResults = async(query) => {
-        const gptQuery = `Act as a Movie Recommendation system and do the following : ${query} movies with release year exactly like 1.film1(year), 2.film2(year), 3.film3(year). all 20 movies should be provided by you .return as numbered film with each film in new line. no texts. only show films.`
+        try {
+            const gptQuery = `Act as a Movie Recommendation system and do the following : ${query} movies with release year exactly like 1.film1(year), 2.film2(year), 3.film3(year). all 20 movies should be provided by you .return as numbered film with each film in new line. no texts. only show films.`
+        
+            const chatCompletion = await openAI_config.chat.completions.create({
+                messages: [{ role: 'user', content: gptQuery }],
+                model: 'gpt-3.5-turbo',
+            });
     
-        const chatCompletion = await openAI_config.chat.completions.create({
-            messages: [{ role: 'user', content: gptQuery }],
-            model: 'gpt-3.5-turbo',
-        });
-
-        return chatCompletion.choices[0].message.content;
+            return chatCompletion.choices[0].message.content;
+            
+        } catch (error) {
+               return "Unable to generate GPT suggestions" 
+        }
     }
 
     //handling gpt api
@@ -41,14 +46,19 @@ function GPTSearch() {
 
     //GPT Search logic && TMDB api logic
     const handleGptSearch = async() => {
-        if(query === "") return;
-        console.log("button clicked :::"+ query)
-
-        const tmdbResults = await getTmdbResults(query);
-        dispatch(setTmdbSuggestions(tmdbResults))
-
-        const gptResults = await getGptResults(query);
-        dispatch(setGptSuggestions(gptResults))
+        try {
+            if(query === "") return;
+            console.log("button clicked :::"+ query)
+    
+            const tmdbResults = await getTmdbResults(query);
+            dispatch(setTmdbSuggestions(tmdbResults))
+    
+            const gptResults = await getGptResults(query);
+            dispatch(setGptSuggestions(gptResults))
+            
+        } catch (error) {
+            dispatch(setGptSuggestions(error.message))
+        }
     }
 
   return (

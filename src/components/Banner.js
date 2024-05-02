@@ -1,6 +1,6 @@
 import React, { useRef, useState} from 'react'
 import Header from './Header'
-import LEO_TRAILER from '../assets/Leo trailer.mp4'
+import GOATLIFE_TRAILER from '../assets/goatlife trailer.mp4'
 
 const Banner = () => {
 
@@ -23,7 +23,7 @@ const Banner = () => {
         {/* text over image */}
         <div className="relative">
 
-            <div className="bg-black bg-opacity-50 absolute inset-0"></div>
+            {/* <div className="bg-black bg-opacity-50 absolute inset-0"></div> */}
 
             <Header />
 
@@ -35,30 +35,34 @@ const Banner = () => {
                 allowfullscreen>
             </iframe> */}
 
-            <video autoPlay muted className=' mt-[-100px] hidden lg:block' ref={videoRef}>
-                <source src={LEO_TRAILER} type="video/mp4" className='w-screen h-screen aspect-video object-cover' />
+            <video autoPlay loop muted className=' mt-[-100px] hidden lg:block' ref={videoRef}>
+                <source src={GOATLIFE_TRAILER} type="video/mp4" className='w-screen h-screen aspect-video object-cover' />
                 Your browser does not support the video tag.
             </video>
 
             {/* image for smaller screensl */}
             <img 
-                src="https://www.hindustantimes.com/ht-img/img/2023/06/22/1600x900/Leo_First_Look_1687403718085_1687403733149.jpg" 
-                alt="leo banner" 
+                src="https://www.onmanorama.com/content/dam/mm/en/entertainment/entertainment-news/images/2023/3/23/aadujeevitham-2.jpg.transform/576x300/image.jpg" 
+                alt="goat-life banner" 
                 className="w-full h-screen object-cover sm:block lg:hidden" 
             />
 
             {/* texts over image */}
             <div className="z-10 absolute top-0 p-5 bottom-0 flex flex-col items-start justify-center">                
-                <div className="font-leo text-white text-6xl lg:text-8xl font-bold">LEO</div>
-                <div className="mt-4 text-white text-sm lg:text-base font-bold w-2/3 lg:w-1/3"> Parthiban is a mild mannered cafe owner in Kashmir, who fends off a gang of murderous thugs and gains attention from a drug cartel claiming he was once a part of them.</div>
+                <div className="font-leo text-white text-6xl lg:text-6xl font-bold">Aadujeevitham</div>
+                <div className="mt-4 text-white text-sm lg:text-base w-2/3 lg:w-1/3">
+                    Aadujeevitham (Goat Life), adapted from the bestselling 2008 Malayalam book, stars Prithviraj Sukumaran as Najeeb, an Indian immigrant in Saudi Arabia who is kidnapped and forced into slave-like labour as a goat herder in the desert. The story is inspired by the real-life ordeal of a man with the same name, who was abducted in the country in the 1990s and managed to escape after two years.
+                </div>
                 { isMoreInfoSelected &&
                     <>
-                        <div className="text-red-300 text-sm lg:text-base lg:w-1/3 mt-5"> <b>Director:</b>  Lokesh Kanagaraj </div>
+                        <div className="text-red-300 text-sm lg:text-base lg:w-1/3 mt-5"> <b>Director:</b>  Blessy </div>
                         <div className="text-red-300 text-sm lg:text-base lg:w-1/3"> <b> Writers:</b> Lokesh Kanagaraj, Rathna Kumar, Deeraj Vaidy </div>
-                        <div className="text-red-300 text-sm lg:text-base lg:w-1/3"> <b> Stars: </b> Joseph Vijay, Sanjay Dutt, Trisha Krishnan </div>
+                        <div className="text-red-300 text-sm lg:text-base lg:w-1/3"> <b> Stars: </b> 
+                            Prithviraj Sukumaran, Amala Paul, K R Gokul, Jimmy Jean-Louis 
+                        </div>
                         <div className='flex mt-4'>
-                            <span className='text-xs text-red-500 font-bold px-4 py-1 mr-1 border border-red-500 rounded-3xl hover:bg-red-500 hover:text-white'>Action</span>
-                            <span className='text-xs text-red-500 font-bold px-4 py-1 mr-1 border border-red-500 rounded-3xl hover:bg-red-500 hover:text-white'>Crime</span>
+                            <span className='text-xs text-red-500 font-bold px-4 py-1 mr-1 border border-red-500 rounded-3xl hover:bg-red-500 hover:text-white'>Romance</span>
+                            <span className='text-xs text-red-500 font-bold px-4 py-1 mr-1 border border-red-500 rounded-3xl hover:bg-red-500 hover:text-white'>Adventure</span>
                             <span className='text-xs text-red-500 font-bold px-4 py-1 mr-1 border border-red-500 rounded-3xl hover:bg-red-500 hover:text-white'>Drama</span>
                             <span className='text-xs text-red-500 font-bold px-4 py-1 mr-1 border border-red-500 rounded-3xl hover:bg-red-500 hover:text-white'>Thriller</span>
                         </div>
