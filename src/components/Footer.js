@@ -2,33 +2,33 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div  className='bg-black py-8 px-36 text-gray-100'>
+    <div className='bg-black py-12 px-8 md:px-36 text-neutral-400 border-t border-neutral-800'>
         <div className="mb-12">
             Questions? Call 000-800-919-1694
         </div>
-        <div className='grid grid-cols-12'>
+        <div className='grid grid-cols-12 gap-y-8'>
             <div className="md:col-span-3 col-span-6 flex flex-col gap-y-4">
-                <div>faq</div>
-                <div>investor returns</div>
-                <div>Privacy</div>
-                <div>Speed test</div>
+                <div className="hover:text-white hover:underline cursor-pointer transition-colors">FAQ</div>
+                <div className="hover:text-white hover:underline cursor-pointer transition-colors">Investor returns</div>
+                <div className="hover:text-white hover:underline cursor-pointer transition-colors">Privacy</div>
+                <div className="hover:text-white hover:underline cursor-pointer transition-colors">Speed test</div>
             </div>
             <div className="md:col-span-3 col-span-6 flex flex-col gap-y-4">
-                <div>Help centers</div>
-                <div>Jobs</div>
-                <div>Cookie preferences</div>
-                <div>Legal notices</div>
+                <div className="hover:text-white hover:underline cursor-pointer transition-colors">Help centre</div>
+                <div className="hover:text-white hover:underline cursor-pointer transition-colors">Jobs</div>
+                <div className="hover:text-white hover:underline cursor-pointer transition-colors">Cookie preferences</div>
+                <div className="hover:text-white hover:underline cursor-pointer transition-colors">Legal notices</div>
             </div>
             <div className="md:col-span-3 col-span-6 flex flex-col gap-y-4">
-                <div>Account</div>
-                <div>Ways to watch</div>
-                <div>Corporate Information</div>
-                <div>Only on Netflix</div>
+                <div className="hover:text-white hover:underline cursor-pointer transition-colors">Account</div>
+                <div className="hover:text-white hover:underline cursor-pointer transition-colors">Ways to watch</div>
+                <div className="hover:text-white hover:underline cursor-pointer transition-colors">Corporate information</div>
+                <div className="hover:text-white hover:underline cursor-pointer transition-colors">Only on PixelFlicks</div>
             </div>
             <div className="md:col-span-3 col-span-6 flex flex-col gap-y-4">
-                <div>Media center</div>
-                <div>Terms of use</div>
-                <div>Contact Us</div>
+                <div className="hover:text-white hover:underline cursor-pointer transition-colors">Media centre</div>
+                <div className="hover:text-white hover:underline cursor-pointer transition-colors">Terms of use</div>
+                <div className="hover:text-white hover:underline cursor-pointer transition-colors">Contact us</div>
             </div>
         </div>
 

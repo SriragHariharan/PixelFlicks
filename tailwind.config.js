@@ -10,6 +10,12 @@ module.exports = {
         amantic:['Amatic SC', 'sans-serif'],
         leo: ['Libre Baskerville', 'serif']
       },
+      colors: {
+        brand: {
+          red: '#e50914',
+          'red-dark': '#b0060f',
+        },
+      },
     },
   },
   plugins: [],

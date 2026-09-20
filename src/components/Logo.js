@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 
 function Logo() {
   return (
-    <Link to={'/'} className='flex'>
-        <div className="leaf w-7 h-7 xl:w-14 xl:h-14 inline-block"></div>
-        <span className="text-4xl xl:text-6xl font-amantic font-extrabold text-green-300">
+    <Link to={'/'} className='flex items-center gap-x-2'>
+        <i className="fa-solid fa-clapperboard text-xl xl:text-4xl text-brand-red"></i>
+        <span className="text-4xl xl:text-6xl font-amantic font-extrabold text-white">
             PixelFlicks
         </span>
     </Link>
