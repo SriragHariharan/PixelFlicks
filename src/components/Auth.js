@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { MAIN_BANNER_IMAGE } from '../utils/constants'
 import Login from './Login'
 import Signup from './Signup'
 import Logo from './Logo'
@@ -12,22 +11,21 @@ const Auth = () => {
   };
 
   return (
-    <div className="relative">
-        <div>
-            <div className="bg-black bg-opacity-100 absolute inset-0"></div>
-            <img src={MAIN_BANNER_IMAGE} alt="banner home screen" className="opacity-50 h-screen w-full sm: object-cover lg:object-fit" />
+    <div className="relative min-h-screen">
+        <div className="absolute inset-0 h-full w-full bg-black bg-[radial-gradient(ellipse_at_top,_#b0060f_0%,_#000000_55%)] opacity-90">
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/70"></div>
         </div>
-        
+
         <div className="z-10 absolute top-4 left-4 flex items-center justify-center">
             <Logo />
         </div>
 
-        <div className="absolute inset-0 flex mt-10 lg:items-center justify-center">
-          {
-            newUser ? <Signup updateNewUserState={updateNewUserState} /> : <Login updateNewUserState={updateNewUserState} /> 
-          }
-            
-            
+        <div className="z-10 relative flex min-h-screen items-center justify-center px-4 py-24">
+          <div className="w-full max-w-md rounded-lg bg-black/70 border border-neutral-800 p-6 lg:p-10">
+            {
+              newUser ? <Signup updateNewUserState={updateNewUserState} /> : <Login updateNewUserState={updateNewUserState} />
+            }
+          </div>
         </div>
     </div>
   )

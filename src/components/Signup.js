@@ -8,26 +8,26 @@ import { useNavigate } from 'react-router-dom';
 import { USER_AVATAR } from '../utils/constants';
 
 const Signup = ({updateNewUserState}) => {
-    
+
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate()
-    
+
     //toggle form to login
     const changeFormToLogin = () => {
         updateNewUserState()
     }
-    
+
     //form handling
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
-    
+
     //uploading form data to firebase
     const onSubmit = (data) => {
         setLoading(true);
         //firebase code
         createUserWithEmailAndPassword(auth, data.email, data.confirmPassword)
-        .then((userCredential) => { 
+        .then((userCredential) => {
             const user = userCredential.user;
             updateProfile(user, {
                 displayName: data.username,
@@ -45,65 +45,67 @@ const Signup = ({updateNewUserState}) => {
             setError(errorMessage)
         });
     }
-  
+
   return (
-    <div className="bg-black p-6 bg-opacity-0 lg:bg-opacity-50">
+    <div>
         <form onSubmit={handleSubmit(onSubmit)}>
-            <p className="mb-4 text-center text-white text-2xl lg:text-4xl">Sign up</p>
+            <p className="mb-6 text-center text-white text-2xl lg:text-3xl font-bold">Sign up</p>
 
             {/* error messages */}
-            {error && <p className='text-center text-red-500 py-2 px-4 border border-red-500'>{error}</p>}
+            {error && <p className='text-center text-red-500 py-2 px-4 border border-red-500 rounded-md mb-4'>{error}</p>}
 
-            <div className="mb-5 lg:mb-6">
-                <label htmlFor="username" className="block text-lg font-medium text-white md:text-4xl lg:text-base">Username</label>
-                <input 
-                    type="text" 
-                    {...register("username", { required: true, minLength: 4, maxLength:20 })}
-                    placeholder='Username' 
-                    className="mt-2 p-2 w-full border rounded-md bg-red-40 md:text-4xl md:h-28 lg:h-10 lg:text-sm lg:w-96" 
+            <div className="mb-5">
+                <label htmlFor="username" className="block text-sm font-medium text-neutral-300 lg:text-base">Username</label>
+                <input
+                    type="text"
+                    {...register("username", { required: true, minLength: 4, maxLength:20, pattern: /^[a-zA-Z0-9_]+$/ })}
+                    placeholder='Username'
+                    className="mt-2 p-2 w-full rounded-md bg-neutral-800 text-white placeholder:text-neutral-500 outline-none focus:ring-2 focus:ring-brand-red lg:h-10 lg:text-sm"
                 />
                 {errors.username?.type === "required" && (<p className='form-error'>Username is required</p> )}
                 {errors.username?.type === "minLength" && (<p className='form-error'>Username too short</p> )}
                 {errors.username?.type === "maxLength" && (<p className='form-error'>Username too long</p> )}
+                {errors.username?.type === "pattern" && (<p className='form-error'>Username can only contain letters, numbers and underscores</p> )}
             </div>
 
-            <div className="mb-5 lg:mb-6">
-                <label htmlFor="username" className="block text-lg font-medium text-white md:text-4xl lg:text-base">email</label>
-                <input 
-                    type='email' 
+            <div className="mb-5">
+                <label htmlFor="email" className="block text-sm font-medium text-neutral-300 lg:text-base">Email</label>
+                <input
+                    type='email'
                     {...register("email", { required: true, pattern:/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i })}
-                    placeholder='mail-id@domain.com' 
-                    className="mt-2 p-2 w-full border rounded-md md:text-4xl md:h-28 lg:h-10 lg:text-sm " 
+                    placeholder='mail-id@domain.com'
+                    className="mt-2 p-2 w-full rounded-md bg-neutral-800 text-white placeholder:text-neutral-500 outline-none focus:ring-2 focus:ring-brand-red lg:h-10 lg:text-sm"
                 />
-                {errors.email?.type === "required" && (<p className='form-error'>email too short</p> )}
+                {errors.email?.type === "required" && (<p className='form-error'>email is required</p> )}
                 {errors.email?.type === "pattern" && (<p className='form-error'>email invalid</p> )}
             </div>
 
-            <div className="mb-5 lg:mb-6">
-                <label htmlFor="password" className="block text-lg font-medium text-white md:text-4xl lg:text-base">password</label>
-                <input 
-                    type="password" 
-                    {...register("password", { required: true, minLength:8, maxLength:24 })}
-                    placeholder='*************' 
-                    className="mt-2 p-2 w-full border rounded-md md:text-4xl md:h-28 lg:h-10 lg:text-sm " 
+            <div className="mb-5">
+                <label htmlFor="password" className="block text-sm font-medium text-neutral-300 lg:text-base">Password</label>
+                <input
+                    type="password"
+                    {...register("password", { required: true, minLength:8, maxLength:24, pattern: /^(?=.*[A-Za-z])(?=.*\d).+$/ })}
+                    placeholder='*************'
+                    className="mt-2 p-2 w-full rounded-md bg-neutral-800 text-white placeholder:text-neutral-500 outline-none focus:ring-2 focus:ring-brand-red lg:h-10 lg:text-sm"
                 />
                 {errors.password?.type === "required" && (<p className='form-error'>Password is required</p> )}
                 {errors.password?.type === "minLength" && (<p className='form-error'>Password too short</p> )}
                 {errors.password?.type === "maxLength" && (<p className='form-error'>Password too long</p> )}
+                {errors.password?.type === "pattern" && (<p className='form-error'>Password must contain at least one letter and one number</p> )}
             </div>
 
-            <div className="mb-5 lg:mb-6">
-                <label htmlFor="password" className="block text-lg font-medium text-white md:text-4xl lg:text-base">confirm password</label>
-                <input 
-                    type="password" 
+            <div className="mb-6">
+                <label htmlFor="confirmPassword" className="block text-sm font-medium text-neutral-300 lg:text-base">Confirm password</label>
+                <input
+                    type="password"
                     {...register("confirmPassword", { required: true, minLength:8, maxLength:24, validate: (val) => {
                                 if (watch('password') !== val) {
                                   return "passwords mismatch";
                                 }
                               }
                     })}
-                    placeholder='*************' 
-                    className="mt-2 p-2 w-full border rounded-md md:text-4xl md:h-28 lg:h-10 lg:text-sm " 
+                    placeholder='*************'
+                    className="mt-2 p-2 w-full rounded-md bg-neutral-800 text-white placeholder:text-neutral-500 outline-none focus:ring-2 focus:ring-brand-red lg:h-10 lg:text-sm"
                 />
                 {errors.confirmPassword?.type === "required" && (<p className='form-error'>Password is required</p> )}
                 {errors.confirmPassword?.type === "minLength" && (<p className='form-error'>Password too short</p> )}
@@ -116,17 +118,17 @@ const Signup = ({updateNewUserState}) => {
                 {
                     loading ?
                     (
-                        <button className='w-full py-2 bg-green-500 text-white rounded-md md:text-4xl lg:text-lg md:h-28 lg:h-10'>
+                        <button className='w-full py-2 bg-brand-red text-white rounded-md lg:text-lg lg:h-10' disabled>
                             <i className="fa-solid fa-circle-notch fa-spin "></i>
                         </button>
                     )
                     :
-                    <input type="submit" className="w-full cursor-pointer py-2 bg-green-500 text-white rounded-md md:text-4xl lg:text-lg md:h-28 lg:h-10" />
+                    <input type="submit" value="Sign up" className="w-full cursor-pointer py-2 bg-brand-red hover:bg-brand-red-dark transition-colors text-white font-semibold rounded-md lg:text-lg lg:h-10" />
                 }
             </div>
 
-            <div className='sm:mt-12 lg:mt-6'>
-                <p onClick={changeFormToLogin} className='mt-4 text-center text-green-500 text-lg lg:text-base cursor-pointer'>Existing user ? Login now</p>
+            <div className='mt-6'>
+                <p onClick={changeFormToLogin} className='text-center text-brand-red hover:underline text-sm lg:text-base cursor-pointer'>Existing user? Login now</p>
             </div>
         </form>
     </div>
