@@ -6,17 +6,11 @@ function MoviesContainer() {
   const [nowPlayingMovies, popularMovies, topRatedMovies, upCommingMovies] = useGetMovies();
 
   return (
-    <div className="relative bg-black">
+    <div className="relative bg-black pb-16 pt-8  space-y-12">
         <MoviesCategory category={'Now Playing'} moviesArray={nowPlayingMovies?.results} />
-
-        <div className="mt-24"></div>
         <MoviesCategory category={'Popular'} moviesArray={popularMovies?.results} />
-
-        <div className="mt-24"></div>
         <MoviesCategory category={'Top Rated'} moviesArray={topRatedMovies?.results} />
-
-        <div className="mt-24"></div>
-        <MoviesCategory category={'UpComming'} moviesArray={upCommingMovies?.results} />
+        <MoviesCategory category={'Upcoming'} moviesArray={upCommingMovies?.results} />
     </div>
   )
 }

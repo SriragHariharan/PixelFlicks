@@ -4,15 +4,15 @@ import MovieCard from './MovieCard'
 function MoviesCategory({ category, moviesArray }) {
   return (
     <div>
-            <div className="text-white text-xl ml-5 block -mt-24">
-                <h1>{category} &gt;&gt; </h1>
-            </div>
+            <h1 className="text-white text-xl font-semibold ml-5 mb-2 flex items-center gap-x-2">
+                {category} <i className="fa-solid fa-chevron-right text-brand-red text-sm"></i>
+            </h1>
             <div className="flex overflow-x-scroll bg-transparent">
                 {
                     moviesArray?.map(m => (
                         <div className="flex" key={m?.id}>
                             <MovieCard movieDetails={m} />
-                        </div> 
+                        </div>
 
                     ))
                 }

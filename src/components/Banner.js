@@ -1,83 +1,77 @@
 import React, { useRef, useState} from 'react'
 import Header from './Header'
-import GOATLIFE_TRAILER from '../assets/goatlife trailer.mp4'
+
+const TRAILER_YOUTUBE_ID = 'fk0JHh1P9H0'
 
 const Banner = () => {
 
     //show more info about movie
     const [isMoreInfoSelected, setIsMoreInfoSelected] = useState(false);
 
-    //pause or play a video
-    const videoRef = useRef(null);
-    const handleVideoClick = () => {
-        const video = videoRef.current;
-        if (video.paused) {
-            video.play();
-        } else {
-            video.pause();
-        }
+    //mute or unmute the trailer
+    const [isMuted, setIsMuted] = useState(true);
+    const iframeRef = useRef(null);
+    const toggleMute = () => {
+        const player = iframeRef.current?.contentWindow;
+        if (!player) return;
+        const command = isMuted ? 'unMute' : 'mute';
+        player.postMessage(JSON.stringify({ event: 'command', func: command, args: [] }), '*');
+        setIsMuted(!isMuted);
     };
 
   return (
     <div>
-        {/* text over image */}
-        <div className="relative">
-
-            {/* <div className="bg-black bg-opacity-50 absolute inset-0"></div> */}
+        {/* trailer + text over it */}
+        <div className="relative z-10 h-screen">
 
             <Header />
 
-            {/* video embed from youtube */}
-            {/* <iframe 
-                className='w-full h-screen sm:hidden lg:block' 
-                src="https://www.youtube.com/embed/Po3jStA673E?autoplay=1&mute=1&controls=0&cc_load_policy=3" 
-                allow="autoplay;" 
-                allowfullscreen>
-            </iframe> */}
+            {/* youtube trailer, autoplaying/muted/looping/no controls, always covering the full viewport regardless of aspect ratio */}
+            <div className="absolute inset-0 overflow-hidden">
+                <iframe
+                    ref={iframeRef}
+                    title="BKU trailer"
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                    style={{ width: '177.78vh', height: '56.25vw', minWidth: '100vw', minHeight: '100vh' }}
+                    src={`https://www.youtube.com/embed/${TRAILER_YOUTUBE_ID}?autoplay=1&mute=1&controls=0&loop=1&playlist=${TRAILER_YOUTUBE_ID}&cc_load_policy=0&modestbranding=1&enablejsapi=1&playsinline=1`}
+                    allow="autoplay; encrypted-media"
+                    allowFullScreen
+                ></iframe>
+            </div>
 
-            <video autoPlay loop muted className=' mt-[-100px] hidden lg:block' ref={videoRef}>
-                <source src={GOATLIFE_TRAILER} type="video/mp4" className='w-screen h-screen aspect-video object-cover' />
-                Your browser does not support the video tag.
-            </video>
-
-            {/* image for smaller screensl */}
-            <img 
-                src="https://www.onmanorama.com/content/dam/mm/en/entertainment/entertainment-news/images/2023/3/23/aadujeevitham-2.jpg.transform/576x300/image.jpg" 
-                alt="goat-life banner" 
-                className="w-full h-screen object-cover sm:block lg:hidden" 
-            />
-
-            {/* texts over image */}
-            <div className="z-10 absolute top-0 p-5 bottom-0 flex flex-col items-start justify-center">                
-                <div className="font-leo text-white text-6xl lg:text-6xl font-bold">Aadujeevitham</div>
-                <div className="mt-4 text-white text-sm lg:text-base w-2/3 lg:w-1/3">
-                    Aadujeevitham (Goat Life), adapted from the bestselling 2008 Malayalam book, stars Prithviraj Sukumaran as Najeeb, an Indian immigrant in Saudi Arabia who is kidnapped and forced into slave-like labour as a goat herder in the desert. The story is inspired by the real-life ordeal of a man with the same name, who was abducted in the country in the 1990s and managed to escape after two years.
-                </div>
+            {/* texts over trailer, hidden by default so the video stays visible */}
+            <div className="z-10 absolute top-0 p-5 bottom-0 flex flex-col items-start justify-center">
                 { isMoreInfoSelected &&
                     <>
-                        <div className="text-red-300 text-sm lg:text-base lg:w-1/3 mt-5"> <b>Director:</b>  Blessy </div>
-                        <div className="text-red-300 text-sm lg:text-base lg:w-1/3"> <b> Writers:</b> Lokesh Kanagaraj, Rathna Kumar, Deeraj Vaidy </div>
-                        <div className="text-red-300 text-sm lg:text-base lg:w-1/3"> <b> Stars: </b> 
-                            Prithviraj Sukumaran, Amala Paul, K R Gokul, Jimmy Jean-Louis 
+                        <div className="font-leo text-white text-4xl lg:text-6xl font-bold">BKU <span className="text-brand-red">(Bethlehem Kudumba Unit)</span></div>
+                        <div className="mt-4 text-neutral-200 text-sm lg:text-base w-2/3 lg:w-1/3">
+                            A Malayalam romantic comedy about Justin, a middle-aged bachelor, and Ashley, a young woman who returns home after a difficult experience. They get off on the wrong foot but gradually develop feelings for each other through their shared love of music, complicated by family opposition, age differences, and their tightly connected community.
                         </div>
-                        <div className='flex mt-4'>
-                            <span className='text-xs text-red-500 font-bold px-4 py-1 mr-1 border border-red-500 rounded-3xl hover:bg-red-500 hover:text-white'>Romance</span>
-                            <span className='text-xs text-red-500 font-bold px-4 py-1 mr-1 border border-red-500 rounded-3xl hover:bg-red-500 hover:text-white'>Adventure</span>
-                            <span className='text-xs text-red-500 font-bold px-4 py-1 mr-1 border border-red-500 rounded-3xl hover:bg-red-500 hover:text-white'>Drama</span>
-                            <span className='text-xs text-red-500 font-bold px-4 py-1 mr-1 border border-red-500 rounded-3xl hover:bg-red-500 hover:text-white'>Thriller</span>
+                        <div className="text-neutral-300 text-sm lg:text-base lg:w-1/3 mt-5"> <b className="text-white">Director:</b> Girish A D </div>
+                        <div className="text-neutral-300 text-sm lg:text-base lg:w-1/3"> <b className="text-white">Stars:</b> Nivin Pauly, Mamitha Baiju </div>
+                        <div className='flex flex-wrap mt-4'>
+                            <span className='text-xs text-brand-red font-bold px-4 py-1 mr-1 mb-1 border border-brand-red rounded-3xl hover:bg-brand-red hover:text-white transition-colors'>Romance</span>
+                            <span className='text-xs text-brand-red font-bold px-4 py-1 mr-1 mb-1 border border-brand-red rounded-3xl hover:bg-brand-red hover:text-white transition-colors'>Comedy</span>
+                            <span className='text-xs text-brand-red font-bold px-4 py-1 mr-1 mb-1 border border-brand-red rounded-3xl hover:bg-brand-red hover:text-white transition-colors'>Drama</span>
+                            <span className='text-xs text-brand-red font-bold px-4 py-1 mr-1 mb-1 border border-brand-red rounded-3xl hover:bg-brand-red hover:text-white transition-colors'>Family</span>
                         </div>
                     </>
                 }
-                <div className='flex mt-6'>
-                    <button className='hidden lg:block text-black bg-white font-bold lg:w-28 lg:h-12 lg:text-base sm:w-96 sm:h-24 sm:text-4xl rounded-lg mr-6 hover:bg-opacity-50' onClick={handleVideoClick}>
-                        <i className="fa-solid fa-play"></i> &nbsp;&nbsp;
-                        PLAY
-                    </button>
-                    <button onClick={() => setIsMoreInfoSelected(!isMoreInfoSelected)} className='text-white w-48 h-12 text-base bg-slate-500 bg-opacity-40 hover:bg-opacity-100 font-bold px-6 py-2 rounded-lg'>
-                        <i className="fa-solid fa-circle-info"></i> &nbsp;&nbsp;
-                        MORE INFO
-                    </button>
-                </div>
+            </div>
+
+            {/* mute + info buttons, bottom-right corner */}
+            <div className='z-10 absolute bottom-6 right-6 flex'>
+                <button className='text-white font-bold w-14 h-12 text-base rounded-lg mr-3 bg-white/10 hover:bg-white/20 transition-colors' onClick={toggleMute} aria-label={isMuted ? 'Unmute trailer' : 'Mute trailer'}>
+                    <i className={`fa-solid ${isMuted ? 'fa-volume-xmark' : 'fa-volume-high'}`}></i>
+                </button>
+                <button
+                    className='text-white font-bold w-14 h-12 text-lg rounded-lg bg-white/10 hover:bg-white/20 transition-colors'
+                    onClick={() => setIsMoreInfoSelected(!isMoreInfoSelected)}
+                    aria-label={isMoreInfoSelected ? 'Hide movie info' : 'Show movie info'}
+                    aria-pressed={isMoreInfoSelected}
+                >
+                    <i className="fa-solid fa-circle-info"></i>
+                </button>
             </div>
 
         </div>
@@ -86,4 +80,3 @@ const Banner = () => {
 }
 
 export default Banner
-
