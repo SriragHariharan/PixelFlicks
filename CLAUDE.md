@@ -4,7 +4,7 @@ Guidance for Claude Code when working in this repository.
 
 ## Project
 
-PixelFlicks — a Netflix-inspired React movie browsing app. Users sign in via
+Pix — a Netflix-inspired React movie browsing app. Users sign in via
 Firebase auth, browse TMDB-sourced movies/shows, and can search using an
 OpenAI GPT-powered natural language search. Bootstrapped with Create React
 App (`react-scripts`).
@@ -47,4 +47,6 @@ Tailwind theme colors are defined in `tailwind.config.js` under
 hardcoding one-off Tailwind color utilities like `red-600` for the primary
 accent color. Backgrounds/surfaces use Tailwind's default `black`/`neutral`
 scale. Font Awesome (loaded via CDN in `public/index.html`) is available
-globally for icons — no import needed.
+globally for icons — no import needed. The "Pix" wordmark (`Logo.js`) uses
+the `font-pix` Tailwind class (Bungee, imported in `index.css`) — keep that
+font reserved for the logo/wordmark rather than reusing it for body text.

@@ -17,7 +17,7 @@ function WelcomePageFeatures() {
                 </div>
             </div>
             <div className="text-white col-span-12 md:col-span-6 flex items-center">
-                <img src={IMG_1} alt="Watching PixelFlicks on a smart TV" />
+                <img src={IMG_1} alt="Watching Pix on a smart TV" />
             </div>
         </div>
 
@@ -43,7 +43,7 @@ function WelcomePageFeatures() {
                 </div>
             </div>
             <div className="text-white col-span-12 md:col-span-6 flex items-center">
-                <img src={IMG_3} alt="Watching PixelFlicks across devices" />
+                <img src={IMG_3} alt="Watching Pix across devices" />
             </div>
         </div>
 

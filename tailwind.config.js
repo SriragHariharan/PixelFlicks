@@ -8,7 +8,8 @@ module.exports = {
     extend: {
       fontFamily: {
         amantic:['Amatic SC', 'sans-serif'],
-        leo: ['Libre Baskerville', 'serif']
+        leo: ['Libre Baskerville', 'serif'],
+        pix: ['Bungee', 'cursive'],
       },
       colors: {
         brand: {

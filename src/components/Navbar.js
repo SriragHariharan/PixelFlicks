@@ -19,7 +19,7 @@ const Navbar = () => {
           {/* overlaying text */}
           <div className="z-10 relative h-full flex flex-col items-center justify-center px-6">
             <p className="text-white text-4xl text-center font-extrabold leading-[1.3] lg:text-7xl lg:px-24 lg:leading-[1.2]">
-              Laughter. Tears. Thrills. Find it all on <span className="text-brand-red">PixelFlicks</span>
+              Laughter. Tears. Thrills. Find it all on <span className="text-brand-red font-pix">Pix</span>
             </p>
             <p className="text-white text-xl mt-10 text-center font-semibold leading-[1.5] sm:text-3xl">
               Start your movie journey now

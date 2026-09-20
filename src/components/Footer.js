@@ -23,7 +23,7 @@ function Footer() {
                 <div className="hover:text-white hover:underline cursor-pointer transition-colors">Account</div>
                 <div className="hover:text-white hover:underline cursor-pointer transition-colors">Ways to watch</div>
                 <div className="hover:text-white hover:underline cursor-pointer transition-colors">Corporate information</div>
-                <div className="hover:text-white hover:underline cursor-pointer transition-colors">Only on PixelFlicks</div>
+                <div className="hover:text-white hover:underline cursor-pointer transition-colors">Only on Pix</div>
             </div>
             <div className="md:col-span-3 col-span-6 flex flex-col gap-y-4">
                 <div className="hover:text-white hover:underline cursor-pointer transition-colors">Media centre</div>
@@ -33,7 +33,7 @@ function Footer() {
         </div>
 
         <div className="mt-12">
-            &copy; PixelFlicks India ❤️
+            &copy; Pix India ❤️
         </div>
     </div>
   )

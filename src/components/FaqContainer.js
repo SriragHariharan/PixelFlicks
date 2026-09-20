@@ -3,24 +3,24 @@ import Faq from './Faq'
 
 const FAQS = [
     {
-        question: "What is PixelFlicks?",
-        answer: "PixelFlicks is a streaming platform where you can browse and discover movies and TV shows, powered by real-time data from TMDB and an AI-assisted search that understands natural language requests like \"funny heist movies from the 90s\"."
+        question: "What is Pix?",
+        answer: "Pix is a streaming platform where you can browse and discover movies and TV shows, powered by real-time data from TMDB and an AI-assisted search that understands natural language requests like \"funny heist movies from the 90s\"."
     },
     {
-        question: "What devices can I watch PixelFlicks on?",
-        answer: "PixelFlicks runs in any modern web browser, so you can watch on your laptop, tablet, or phone. The layout adapts to your screen size for a smooth experience on any device."
+        question: "What devices can I watch Pix on?",
+        answer: "Pix runs in any modern web browser, so you can watch on your laptop, tablet, or phone. The layout adapts to your screen size for a smooth experience on any device."
     },
     {
-        question: "Is PixelFlicks free?",
-        answer: "PixelFlicks is a demo project built to showcase a streaming-app experience. Sign up with an email to create an account and start browsing — no payment required."
+        question: "Is Pix free?",
+        answer: "Pix is a demo project built to showcase a streaming-app experience. Sign up with an email to create an account and start browsing — no payment required."
     },
     {
         question: "How do I cancel or manage my account?",
-        answer: "You can manage your profile and sign out at any time from within the app. Since PixelFlicks is a portfolio project, there's no subscription to cancel."
+        answer: "You can manage your profile and sign out at any time from within the app. Since Pix is a portfolio project, there's no subscription to cancel."
     },
     {
         question: "What's the AI-powered search feature?",
-        answer: "PixelFlicks includes a GPT-powered search that takes a plain-language description of what you're in the mood for and returns matching movie suggestions, instead of relying on exact title or genre matches."
+        answer: "Pix includes a GPT-powered search that takes a plain-language description of what you're in the mood for and returns matching movie suggestions, instead of relying on exact title or genre matches."
     },
 ]
 

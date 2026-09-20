@@ -1,6 +1,6 @@
-# PixelFlicks 🍿🎬
+# Pix 🍿🎬
 
-Welcome to __PixelFlicks__. My Netflix-inspired React app! 🍿🎬 This project brings the magic of a streaming platform to your fingertips, offering a seamless and immersive user experience. With a sleek design and intuitive navigation, you can browse through a curated collection of your favorite movies and TV shows. The app leverages React to deliver dynamic and responsive interfaces, making it a delightful platform for entertainment enthusiasts. Grab your popcorn and start exploring the world of cinema from the comfort of your screen!
+Welcome to __Pix__. My Netflix-inspired React app! 🍿🎬 This project brings the magic of a streaming platform to your fingertips, offering a seamless and immersive user experience. With a sleek design and intuitive navigation, you can browse through a curated collection of your favorite movies and TV shows. The app leverages React to deliver dynamic and responsive interfaces, making it a delightful platform for entertainment enthusiasts. Grab your popcorn and start exploring the world of cinema from the comfort of your screen!
 
 ## Dazzling Features 🌟
 
@@ -46,7 +46,7 @@ REACT_APP_TMDB_AUTH_TOKEN = your_token
 - TMDB auth token should be collected from https://developer.themoviedb.org/docs
 
 
-## Running PixelFlicks 🚀
+## Running Pix 🚀
 
 1. **Install Dependencies:**
    ```bash
@@ -56,11 +56,11 @@ REACT_APP_TMDB_AUTH_TOKEN = your_token
    ```bash
    npm start
    ```
-Open your browser and navigate to http://localhost:3000 to experience the magic of PixelFlicks! 🌟
+Open your browser and navigate to http://localhost:3000 to experience the magic of Pix! 🌟
 
 ## Conclusion 🚀
 
-Thank you for exploring this project! We hope you enjoy the immersive experience our **PixelFlicks** brings to your entertainment journey. If you have any questions, feedback, or just want to say hello, feel free to reach out. Happy streaming! 🍿🎉
+Thank you for exploring this project! We hope you enjoy the immersive experience our **Pix** brings to your entertainment journey. If you have any questions, feedback, or just want to say hello, feel free to reach out. Happy streaming! 🍿🎉
 
 ---
 **[ Srirag H  sriraghariharan108@gmail.com ]**
